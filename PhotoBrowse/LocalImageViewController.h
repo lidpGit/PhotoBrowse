@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  LocalImageViewController.h
 //  PhotoBrowse
 //
 //  Created by lidp on 16/5/25.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UITableViewController
+@interface LocalImageViewController : UIViewController
 
 @end
