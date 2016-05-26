@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PhotoInfo.h"
 
 @interface CollectionViewCell : UICollectionViewCell
 
 @property (strong, nonatomic) UIImageView *imageView;
+@property (assign, nonatomic) PhotoInfo *photo;
 
 @end

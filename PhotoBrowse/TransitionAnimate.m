@@ -55,7 +55,7 @@ static const CGFloat duration = 0.5 ; /**< 动画持续时间 */
     if (self.localImage || (self.currentImageURL && [imageManager diskImageExistsForURL:[NSURL URLWithString:self.currentImageURL]])) {
         //显示过度的imageView
         UIImageView *transitionImageView = [[UIImageView alloc] initWithImage:self.presentImageView.image];
-        transitionImageView.frame = [self imageViewFrameInWindow:self.presentImageView];
+        transitionImageView.frame = [self.presentImageView convertRect:self.presentImageView.bounds toView:nil];
         transitionImageView.clipsToBounds = YES;
         transitionImageView.contentMode = UIViewContentModeScaleAspectFill;
         [containerView addSubview:transitionImageView];
@@ -89,12 +89,6 @@ static const CGFloat duration = 0.5 ; /**< 动画持续时间 */
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:YES];
     }];
-}
-
-//获取图片在window里的frame
-- (CGRect)imageViewFrameInWindow:(UIImageView *)imageView{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    return [imageView convertRect:imageView.frame toView:window];
 }
 
 //获取图片在屏幕居中显示的frame

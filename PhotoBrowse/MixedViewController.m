@@ -1,21 +1,21 @@
 //
-//  LocalImageViewController.m
+//  MixedViewController.m
 //  PhotoBrowse
 //
-//  Created by lidp on 16/5/25.
+//  Created by lidp on 16/5/26.
 //  Copyright © 2016年 lidp. All rights reserved.
 //
 
-#import "LocalImageViewController.h"
+#import "MixedViewController.h"
 #import "CollectionViewCell.h"
 #import "PhotoBrowseViewController.h"
 #import "TransitionAnimate.h"
 
-@interface LocalImageViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface MixedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @end
 
-@implementation LocalImageViewController{
+@implementation MixedViewController{
     NSArray             *_dataSource;
     UICollectionView    *_collectionView;
 }
@@ -23,11 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _dataSource = @[[UIImage imageNamed:@"1.jpg"],
-                    [UIImage imageNamed:@"2.jpg"],
-                    [UIImage imageNamed:@"3.jpg"],
-                    [UIImage imageNamed:@"4.jpg"],
-                    [UIImage imageNamed:@"5.jpg"]];
+    
+    _dataSource = @[[self photoInfoWithImage:[UIImage imageNamed:@"1.jpg"] url:nil],
+                    [self photoInfoWithImage:[UIImage imageNamed:@"2.jpg"] url:nil],
+                    [self photoInfoWithImage:nil url:@"http://f.hiphotos.baidu.com/image/pic/item/00e93901213fb80e0ee553d034d12f2eb9389484.jpg"],
+                    [self photoInfoWithImage:nil url:@"http://d.hiphotos.baidu.com/image/pic/item/55e736d12f2eb938e0ae49f5d7628535e4dd6ff1.jpg"],
+                    [self photoInfoWithImage:[UIImage imageNamed:@"3.jpg"] url:nil]];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     CGFloat width = (screen_width - 6) / 3;
@@ -41,6 +42,13 @@
     _collectionView.dataSource = self;
     [_collectionView registerClass:CollectionViewCell.class forCellWithReuseIdentifier:@"CollectionViewCell"];
     [self.view addSubview:_collectionView];
+}
+
+- (PhotoInfo *)photoInfoWithImage:(UIImage *)image url:(NSString *)url{
+    PhotoInfo *info = [[PhotoInfo alloc] init];
+    info.image = image;
+    info.url = url;
+    return info;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,26 +66,24 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCell" forIndexPath:indexPath];
-    [cell.imageView setImage:_dataSource[indexPath.row]];
+    cell.photo = _dataSource[indexPath.row];
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     CollectionViewCell *cell = (id)[collectionView cellForItemAtIndexPath:indexPath];
+    PhotoInfo *photo = _dataSource[indexPath.row];
     
     TransitionAnimate *animate = [[TransitionAnimate alloc] init];
     animate.presentImageView = cell.imageView;
-    animate.localImage = YES;
-    
-    NSMutableArray *photos = [NSMutableArray new];
-    for (UIImage *image in _dataSource) {
-        PhotoInfo *photo = [[PhotoInfo alloc] init];
-        photo.image = image;
-        [photos addObject:photo];
+    if (photo.image) {
+        animate.localImage = YES;
+    }else{
+        animate.currentImageURL = photo.url;
     }
     
     PhotoBrowseViewController *photoBrowseVC = [[PhotoBrowseViewController alloc] init];
-    photoBrowseVC.photos = photos;
+    photoBrowseVC.photos = _dataSource;
     photoBrowseVC.index = indexPath.row;
     photoBrowseVC.animate = animate;
     photoBrowseVC.transitioningDelegate = animate;

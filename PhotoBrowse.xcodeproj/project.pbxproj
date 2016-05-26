@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A0A58AB1CF6B27200BC1E70 /* PhotoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0A58AA1CF6B27200BC1E70 /* PhotoInfo.m */; };
+		6A0A58AE1CF6B42A00BC1E70 /* MixedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0A58AD1CF6B42A00BC1E70 /* MixedViewController.m */; };
 		6A37A9081CF5867100526E6B /* PhotoLoadingProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A37A9071CF5867100526E6B /* PhotoLoadingProgressView.m */; };
 		6A37A90C1CF58A2E00526E6B /* LocalImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A37A90B1CF58A2E00526E6B /* LocalImageViewController.m */; };
 		6A37A9151CF58ACD00526E6B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A37A9141CF58ACD00526E6B /* ViewController.m */; };
@@ -40,6 +42,10 @@
 
 /* Begin PBXFileReference section */
 		6581534C2569105A6970017E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6A0A58A91CF6B27200BC1E70 /* PhotoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoInfo.h; sourceTree = "<group>"; };
+		6A0A58AA1CF6B27200BC1E70 /* PhotoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoInfo.m; sourceTree = "<group>"; };
+		6A0A58AC1CF6B42A00BC1E70 /* MixedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixedViewController.h; sourceTree = "<group>"; };
+		6A0A58AD1CF6B42A00BC1E70 /* MixedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixedViewController.m; sourceTree = "<group>"; };
 		6A37A9061CF5867100526E6B /* PhotoLoadingProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoLoadingProgressView.h; sourceTree = "<group>"; };
 		6A37A9071CF5867100526E6B /* PhotoLoadingProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoLoadingProgressView.m; sourceTree = "<group>"; };
 		6A37A90A1CF58A2E00526E6B /* LocalImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalImageViewController.h; sourceTree = "<group>"; };
@@ -150,6 +156,8 @@
 				6A381FE01CF40932008F63CE /* WebImageViewController.m */,
 				6A37A90A1CF58A2E00526E6B /* LocalImageViewController.h */,
 				6A37A90B1CF58A2E00526E6B /* LocalImageViewController.m */,
+				6A0A58AC1CF6B42A00BC1E70 /* MixedViewController.h */,
+				6A0A58AD1CF6B42A00BC1E70 /* MixedViewController.m */,
 				6A3820001CF40EA1008F63CE /* CollectionViewCell.h */,
 				6A3820011CF40EA1008F63CE /* CollectionViewCell.m */,
 				6A38200C1CF42E02008F63CE /* browse */,
@@ -188,6 +196,8 @@
 				6A3820141CF42E1D008F63CE /* PhotoBrowseScrollView.m */,
 				6A37A9061CF5867100526E6B /* PhotoLoadingProgressView.h */,
 				6A37A9071CF5867100526E6B /* PhotoLoadingProgressView.m */,
+				6A0A58A91CF6B27200BC1E70 /* PhotoInfo.h */,
+				6A0A58AA1CF6B27200BC1E70 /* PhotoInfo.m */,
 			);
 			path = browse;
 			sourceTree = "<group>";
@@ -357,8 +367,10 @@
 			files = (
 				6A3820151CF42E1D008F63CE /* PhotoBrowseScrollView.m in Sources */,
 				6A381FE11CF40932008F63CE /* WebImageViewController.m in Sources */,
+				6A0A58AE1CF6B42A00BC1E70 /* MixedViewController.m in Sources */,
 				6A3820121CF42E02008F63CE /* PhotoBrowseViewController.m in Sources */,
 				6A3820051CF4105C008F63CE /* TransitionAnimate.m in Sources */,
+				6A0A58AB1CF6B27200BC1E70 /* PhotoInfo.m in Sources */,
 				6A37A9151CF58ACD00526E6B /* ViewController.m in Sources */,
 				6A381FDE1CF40932008F63CE /* AppDelegate.m in Sources */,
 				6A3820021CF40EA1008F63CE /* CollectionViewCell.m in Sources */,

@@ -48,7 +48,7 @@ static CGFloat const margin = 10.0f; /**< 图片之间间距 */
     
     _photoViewList = [[NSMutableDictionary alloc] init];
     
-    _totalCount = self.imageUrlArray ? self.imageUrlArray.count : self.imageArray.count;
+    _totalCount = self.photos.count;
     [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width * _totalCount, 0)];
     [_scrollView addSubview:[self photoViewWithIndex:self.index]];
     _scrollView.contentOffset = CGPointMake(self.index * _scrollView.frame.size.width, 0);
@@ -61,16 +61,14 @@ static CGFloat const margin = 10.0f; /**< 图片之间间距 */
     frame.origin.x = frame.size.width * index;
     frame = CGRectInset(frame, margin, 0);
     
-    //本地图片
-    UIImage *image = nil;
-    if (self.imageArray) {
-        image = self.imageArray[index];
-    }
+    PhotoInfo *photo = _photos[index];
     
-    //网络图片
+    UIImage *image = nil;
     NSString *imageURL = nil;
-    if (self.imageUrlArray) {
-        imageURL = self.imageUrlArray[index];
+    if (photo.image) {
+        image = photo.image;
+    }else{
+        imageURL = photo.url;
     }
     
     PhotoBrowseScrollView *photoView = [[PhotoBrowseScrollView alloc] initWithFrame:frame imageURL:imageURL image:image];

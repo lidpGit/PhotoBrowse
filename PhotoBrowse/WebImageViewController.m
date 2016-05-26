@@ -90,8 +90,15 @@
     animate.presentImageView = cell.imageView;
     animate.currentImageURL = _dataSource[indexPath.row];
     
+    NSMutableArray *photos = [NSMutableArray new];
+    for (NSString *url in _dataSource) {
+        PhotoInfo *photo = [[PhotoInfo alloc] init];
+        photo.url = url;
+        [photos addObject:photo];
+    }
+    
     PhotoBrowseViewController *photoBrowseVC = [[PhotoBrowseViewController alloc] init];
-    photoBrowseVC.imageUrlArray = _dataSource;
+    photoBrowseVC.photos = photos;
     photoBrowseVC.index = indexPath.row;
     photoBrowseVC.animate = animate;
     photoBrowseVC.transitioningDelegate = animate;

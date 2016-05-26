@@ -21,4 +21,13 @@
     return self;
 }
 
+- (void)setPhoto:(PhotoInfo *)photo{
+    _photo = photo;
+    if (_photo.image) {
+        _imageView.image = _photo.image;
+    }else{
+        [_imageView sd_setImageWithURL:[NSURL URLWithString:_photo.url] placeholderImage:nil];
+    }
+}
+
 @end
